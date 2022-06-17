@@ -17,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -114,16 +115,28 @@ fun HomeCard(distance:String){
                             Icon(Icons.Filled.Info, "", Modifier.size(48.dp))
                         }
                         Column() {
-                            Text("Food", fontWeight = FontWeight.Bold)
-                            Text("$1")
+                            Text("${FoodList(distance).second.replaceFirstChar(Char::titlecase)}", fontWeight = FontWeight.Bold)
+                            // TODO change distance to cost
+                            Text("$ $distance")
                         }
                     }
-                    Spacer(Modifier.height(10.dp))
+                    Spacer(Modifier.height(5.dp))
                     Row() {
-                        Text("With $distance km you could buy a donut!")
+                        Text("With $distance km you could buy ${FoodList(distance).first} ${FoodList(distance).second}!")
                     }
                 }
             }
         }
+    }
+}
+
+fun FoodList(cost:String): Pair<String,String>{
+0
+    when (cost.toDouble().toInt()) {
+
+        1 -> return Pair("a","candy")
+        2 -> return Pair("a","donut")
+        else -> return Pair("just","nothing",)
+
     }
 }
