@@ -111,7 +111,7 @@ fun HomeCard(distance: String) {
         ) {
             Box(Modifier.padding(12.dp, 12.dp)) {
                 Column() {
-                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Column() {
                             Icon(Icons.Filled.Info, "", Modifier.size(48.dp))
                         }
