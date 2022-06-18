@@ -57,7 +57,7 @@ fun Homepage() {
 
 @Composable
 fun HomeTopbar() {
-    MediumTopAppBar(
+    LargeTopAppBar(
         title = { Text("Drive or Not") },
     )
 }
