@@ -45,8 +45,9 @@ class MainActivity : ComponentActivity() {
 fun Homepage() {
     var cardList = remember { mutableStateListOf<String>() }
     Scaffold(
-        topBar = { HomeTopbar() },
-        content = { innerPadding -> HomeContent(innerPadding, cardList) },
+        content = { innerPadding ->
+            HomeContent(innerPadding, cardList)
+        },
         bottomBar = { HomeBottombar(cardList) }
     )
 }
@@ -61,7 +62,7 @@ fun HomeTopbar() {
 @Composable
 fun HomeContent(innerPaddingValues: PaddingValues, cardList: MutableList<String>) {
     Column() {
-        Spacer(Modifier.height(128.dp))
+        HomeTopbar()
         Row(Modifier.padding(24.dp, 0.dp)) {
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(24.dp)
