@@ -135,7 +135,9 @@ fun HomeBottombar(cardList:MutableList<String>){
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
                 IconButton({
-                    cardList.add(input)
+                    if (input != "") {
+                        cardList.add(input)
+                    }
                     input = ""
                 }) {
                     Icon(Icons.Filled.PlayArrow, "")
