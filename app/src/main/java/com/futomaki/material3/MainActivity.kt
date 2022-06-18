@@ -45,10 +45,13 @@ class MainActivity : ComponentActivity() {
 fun Homepage() {
     var cardList = remember { mutableStateListOf<String>() }
     Scaffold(
+        topBar = { HomeTopbar() },
         content = { innerPadding ->
             HomeContent(innerPadding, cardList)
         },
-        bottomBar = { HomeBottombar(cardList) }
+        bottomBar = {
+            HomeBottombar(cardList)
+        }
     )
 }
 
@@ -61,17 +64,17 @@ fun HomeTopbar() {
 
 @Composable
 fun HomeContent(innerPaddingValues: PaddingValues, cardList: MutableList<String>) {
-    Column() {
-        HomeTopbar()
-        Row(Modifier.padding(24.dp, 0.dp)) {
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(24.dp)
-            ) {
-                items(items = cardList) { it ->
-                    HomeCard(it)
+    Box(modifier = Modifier.padding(innerPaddingValues)) {
+        Column() {
+            Row(Modifier.padding(24.dp, 0.dp)) {
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(24.dp)
+                ) {
+                    items(items = cardList) { it ->
+                        HomeCard(it)
+                    }
                 }
             }
-            Spacer(Modifier.height(120.dp))
         }
     }
 }
