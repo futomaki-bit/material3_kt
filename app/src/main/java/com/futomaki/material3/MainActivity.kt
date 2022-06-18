@@ -46,7 +46,7 @@ fun Homepage() {
     var cardList = remember { mutableStateListOf<String>() }
     Scaffold(
         topBar = { HomeTopbar() },
-        content = { innerPadding -> HomeContent(innerPadding,cardList) },
+        content = { innerPadding -> HomeContent(innerPadding, cardList) },
         bottomBar = { HomeBottombar(cardList) }
     )
 }
@@ -59,7 +59,7 @@ fun HomeTopbar() {
 }
 
 @Composable
-fun HomeContent(innerPaddingValues: PaddingValues,cardList: MutableList<String>) {
+fun HomeContent(innerPaddingValues: PaddingValues, cardList: MutableList<String>) {
     Column() {
         Spacer(Modifier.height(128.dp))
         Row(Modifier.padding(24.dp, 0.dp)) {
@@ -115,10 +115,13 @@ fun HomeCard(distance: String) {
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun HomeBottombar(cardList:MutableList<String>){
+fun HomeBottombar(cardList: MutableList<String>) {
     var input by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
-    Row(Modifier.padding(24.dp)) {
+    Row(
+        Modifier
+            .padding(24.dp)
+    ) {
         TextField(
             value = input,
             onValueChange = { value ->
@@ -148,7 +151,6 @@ fun HomeBottombar(cardList:MutableList<String>){
 }
 
 fun FoodList(cost: String): Pair<String, String> {
-    0
     when (cost.toDouble().toInt()) {
 
         1 -> return Pair("a", "candy")
