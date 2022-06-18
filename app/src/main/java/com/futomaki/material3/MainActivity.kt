@@ -43,9 +43,11 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Homepage() {
+    var cardList = remember { mutableStateListOf<String>() }
     Scaffold(
         topBar = { HomeTopbar() },
-        content = { innerPadding -> HomeContent(innerPadding) },
+        content = { innerPadding -> HomeContent(innerPadding,cardList) },
+        bottomBar = { HomeBottombar(cardList) }
     )
 }
 
@@ -56,39 +58,10 @@ fun HomeTopbar() {
     )
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun HomeContent(innerPaddingValues: PaddingValues) {
-    var input by remember { mutableStateOf("") }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var cardList = remember { mutableStateListOf<String>() }
+fun HomeContent(innerPaddingValues: PaddingValues,cardList: MutableList<String>) {
     Column() {
         Spacer(Modifier.height(128.dp))
-        Row(Modifier.padding(24.dp)) {
-            TextField(
-                value = input,
-                onValueChange = { value ->
-                    if (value.length <= 2) {
-                        input = value.filter { it.isDigit() }
-                    }
-                },
-                label = { Text("distance") },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Decimal,
-                    imeAction = ImeAction.Done
-                ),
-                keyboardActions = KeyboardActions(onDone = { keyboardController?.hide() }),
-                modifier = Modifier.fillMaxWidth(),
-                trailingIcon = {
-                    IconButton({
-                        cardList.add(input)
-                        input = ""
-                    }) {
-                        Icon(Icons.Filled.PlayArrow, "")
-                    }
-                }
-            )
-        }
         Row(Modifier.padding(24.dp, 0.dp)) {
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(24.dp)
@@ -137,6 +110,38 @@ fun HomeCard(distance: String) {
                 }
             }
         }
+    }
+}
+
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun HomeBottombar(cardList:MutableList<String>){
+    var input by remember { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    Row(Modifier.padding(24.dp)) {
+        TextField(
+            value = input,
+            onValueChange = { value ->
+                if (value.length <= 2) {
+                    input = value.filter { it.isDigit() }
+                }
+            },
+            label = { Text("distance") },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Decimal,
+                imeAction = ImeAction.Done
+            ),
+            keyboardActions = KeyboardActions(onDone = { keyboardController?.hide() }),
+            modifier = Modifier.fillMaxWidth(),
+            trailingIcon = {
+                IconButton({
+                    cardList.add(input)
+                    input = ""
+                }) {
+                    Icon(Icons.Filled.PlayArrow, "")
+                }
+            }
+        )
     }
 }
 
