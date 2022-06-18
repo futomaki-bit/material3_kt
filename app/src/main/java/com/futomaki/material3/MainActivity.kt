@@ -70,7 +70,11 @@ fun HomeContent(innerPaddingValues: PaddingValues) {
         Row(Modifier.padding(24.dp)) {
             TextField(
                 value = input,
-                onValueChange = { input = it },
+                onValueChange = { value ->
+                    if (value.length <= 2) {
+                        input = value.filter { it.isDigit() }
+                    }
+                },
                 label = { Text("distance") },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Decimal,
