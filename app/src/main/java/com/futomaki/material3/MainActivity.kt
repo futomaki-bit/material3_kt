@@ -1,6 +1,5 @@
 package com.futomaki.material3
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,12 +16,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
 import com.futomaki.material3.ui.theme.Material3Theme
 
 
@@ -64,7 +61,7 @@ fun HomeTopbar() {
 fun HomeContent(innerPaddingValues: PaddingValues) {
     var input by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
-    var cardList = remember {mutableStateListOf<String>()}
+    var cardList = remember { mutableStateListOf<String>() }
     Column() {
         Spacer(Modifier.height(128.dp))
         Row(Modifier.padding(24.dp)) {
@@ -96,8 +93,8 @@ fun HomeContent(innerPaddingValues: PaddingValues) {
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
-                items(items = cardList) {
-                    it -> HomeCard(it)
+                items(items = cardList) { it ->
+                    HomeCard(it)
                 }
             }
             Spacer(Modifier.height(120.dp))
@@ -107,7 +104,7 @@ fun HomeContent(innerPaddingValues: PaddingValues) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeCard(distance:String){
+fun HomeCard(distance: String) {
     Row() {
         Card(
             modifier = Modifier.width(360.dp)
@@ -119,14 +116,23 @@ fun HomeCard(distance:String){
                             Icon(Icons.Filled.Info, "", Modifier.size(48.dp))
                         }
                         Column() {
-                            Text("${FoodList(distance).second.replaceFirstChar(Char::titlecase)}", fontWeight = FontWeight.Bold)
+                            Text(
+                                "${FoodList(distance).second.replaceFirstChar(Char::titlecase)}",
+                                fontWeight = FontWeight.Bold
+                            )
                             // TODO change distance to cost
                             Text("$ $distance")
                         }
                     }
                     Spacer(Modifier.height(5.dp))
                     Row() {
-                        Text("With $distance km you could buy ${FoodList(distance).first} ${FoodList(distance).second}!")
+                        Text(
+                            "With $distance km you could buy ${FoodList(distance).first} ${
+                                FoodList(
+                                    distance
+                                ).second
+                            }!"
+                        )
                     }
                 }
             }
@@ -134,13 +140,13 @@ fun HomeCard(distance:String){
     }
 }
 
-fun FoodList(cost:String): Pair<String,String>{
-0
+fun FoodList(cost: String): Pair<String, String> {
+    0
     when (cost.toDouble().toInt()) {
 
-        1 -> return Pair("a","candy")
-        2 -> return Pair("a","donut")
-        else -> return Pair("just","nothing",)
+        1 -> return Pair("a", "candy")
+        2 -> return Pair("a", "donut")
+        else -> return Pair("just", "nothing")
 
     }
 }
