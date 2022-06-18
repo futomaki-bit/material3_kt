@@ -124,7 +124,6 @@ fun HomeCard(distance: String) {
                             Text("$ $distance")
                         }
                     }
-                    Spacer(Modifier.height(5.dp))
                     Row() {
                         Text(
                             "With $distance km you could buy ${FoodList(distance).first} ${
