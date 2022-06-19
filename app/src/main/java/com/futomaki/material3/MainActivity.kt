@@ -136,9 +136,18 @@ fun HomeBottombar(cardList: MutableList<String>) {
             label = { Text("distance") },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Decimal,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Send
             ),
-            keyboardActions = KeyboardActions(onDone = { keyboardController?.hide() }),
+            keyboardActions = KeyboardActions(
+                onSend = {
+                    keyboardController?.hide()
+                    if (input != "") {
+                        cardList.add(input)
+                    }
+                    input = ""
+
+                }
+            ),
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
                 IconButton({
