@@ -122,9 +122,7 @@ fun HomeCard(distance: String) {
 fun HomeBottombar(cardList: MutableList<String>) {
     var input by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
-    Row(
-        Modifier
-            .padding(24.dp)
+    Row(Modifier.padding(24.dp,12.dp)
     ) {
         TextField(
             value = input,
