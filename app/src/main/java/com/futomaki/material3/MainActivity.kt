@@ -139,9 +139,7 @@ fun HomeBottombar(cardList: MutableList<String>) {
         TextField(
             value = input,
             onValueChange = { value ->
-                if (value.length <= 2) {
-                    input = value.filter { it.isDigit() }
-                }
+                input = value.filter { it.isDigit() }
             },
             label = { Text("distance") },
             keyboardOptions = KeyboardOptions(
