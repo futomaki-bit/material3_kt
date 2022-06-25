@@ -102,21 +102,25 @@ fun HomeCard(distance: String) {
                         }
                         Column() {
                             Text(
-                                "${FoodList(distance).second.replaceFirstChar(Char::titlecase)}",
+                                "${FoodList(dollar).second.replaceFirstChar(Char::titlecase)}",
                                 fontWeight = FontWeight.Bold
                             )
-                            // TODO change distance to cost
-                            Text("$ $distance")
+                            // TODO in settings
+                            // price = distance * gas price * consumption/100
+                            // $ = km * $/L * L/100km * 1/100
+                            Text("$distance km")
                         }
                     }
                     Spacer(Modifier.height(5.dp))
+
                     Row() {
                         Text(
-                            "With $distance km you could buy ${FoodList(distance).first} ${
-                                FoodList(
-                                    distance
-                                ).second
-                            }!"
+                            // TODO in settings
+                            // price = distance * gas price * consumption/100
+                            // $ = km * $/L * L/100km * 1/100
+                            // The portion '* 100.0).roundToInt() / 100.0' is to leave 2 decimal places
+                            "With $price km you could buy ${FoodList(dollar).first} ${
+                                FoodList(dollar).second}!"
                         )
                     }
                 }
