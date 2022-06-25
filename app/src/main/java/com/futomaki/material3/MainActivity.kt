@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.futomaki.material3.ui.theme.Material3Theme
+import kotlin.math.roundToInt
 
 
 class MainActivity : ComponentActivity() {
@@ -86,6 +87,9 @@ fun HomeContent(innerPaddingValues: PaddingValues, cardList: MutableList<String>
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeCard(distance: String) {
+
+    var dollar = (distance.toInt()*2.1*10/100).roundToInt()
+    var price = ((distance.toInt()*2.1*10/100)* 100.0).roundToInt() / 100.0
     Row() {
         Card(
             modifier = Modifier.width(360.dp)
