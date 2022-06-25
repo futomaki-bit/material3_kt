@@ -171,12 +171,12 @@ fun HomeBottombar(cardList: MutableList<String>) {
     }
 }
 
-fun FoodList(cost: String): Pair<String, String> {
     when (cost.toDouble().toInt()) {
 
         1 -> return Pair("a", "candy")
         2 -> return Pair("a", "donut")
         else -> return Pair("just", "nothing")
 
+fun FoodList(cost: Int): Pair<String, String> {
     }
 }
