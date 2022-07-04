@@ -108,7 +108,7 @@ fun HomeCard(distance: String) {
                             // TODO in settings
                             // price = distance * gas price * consumption/100
                             // $ = km * $/L * L/100km * 1/100
-                            Text("$distance km")
+                            Text("$${price}")
                         }
                     }
                     Spacer(Modifier.height(5.dp))
@@ -119,7 +119,7 @@ fun HomeCard(distance: String) {
                             // price = distance * gas price * consumption/100
                             // $ = km * $/L * L/100km * 1/100
                             // The portion '* 100.0).roundToInt() / 100.0' is to leave 2 decimal places
-                            "With $price km you could buy ${FoodList(dollar).first} ${
+                            "With ${distance} km you could buy ${FoodList(dollar).first} ${
                                 FoodList(dollar).second}!"
                         )
                     }
