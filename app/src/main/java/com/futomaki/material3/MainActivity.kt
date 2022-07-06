@@ -66,7 +66,9 @@ fun Homepage() {
 @Composable
 fun HomeTopbar() {
     var expanded by remember { mutableStateOf(false) }
-    Box(modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.TopEnd)) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .wrapContentSize(Alignment.TopEnd)) {
         IconButton(onClick = { expanded = true }) {
             Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
         }
