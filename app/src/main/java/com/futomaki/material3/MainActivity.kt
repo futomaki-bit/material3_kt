@@ -99,11 +99,13 @@ fun HomeTopbar() {
 fun HomeContent(innerPaddingValues: PaddingValues, cardList: MutableList<String>) {
     // TODO innerPaddingValues broken
     Box(Modifier.padding(0.dp,160.dp,0.dp,90.dp)) {
-        Column() {
+        Column(
+            Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom
+        ) {
             Row(Modifier.padding(24.dp, 0.dp)) {
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(24.dp),
-                    reverseLayout = true,
                 ) {
                     items(items = cardList) {
                         HomeCard(it)
