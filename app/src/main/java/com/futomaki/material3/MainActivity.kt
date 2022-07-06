@@ -97,13 +97,15 @@ fun HomeTopbar() {
 
 @Composable
 fun HomeContent(innerPaddingValues: PaddingValues, cardList: MutableList<String>) {
-    Box(modifier = Modifier.padding(innerPaddingValues)) {
+    // TODO innerPaddingValues broken
+    Box(Modifier.padding(0.dp,160.dp,0.dp,90.dp)) {
         Column() {
             Row(Modifier.padding(24.dp, 0.dp)) {
                 LazyColumn(
-                    verticalArrangement = Arrangement.spacedBy(24.dp)
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
+                    reverseLayout = true,
                 ) {
-                    items(items = cardList) { it ->
+                    items(items = cardList) {
                         HomeCard(it)
                     }
                 }
